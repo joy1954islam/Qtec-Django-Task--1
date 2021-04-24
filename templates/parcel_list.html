@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Merchant</th>
+      <th scope="col">Product Type</th>
+      <th scope="col">Zone</th>
+      <th scope="col">Unit</th>
+      <th scope="col">Merchant Invoice Id</th>
+      <th scope="col">Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for parcel in parcel %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ parcel.merchant }}</td>
+      <td>{{ parcel.product_type }}</td>
+      <td>{{ parcel.zone }}</td>
+      <td>{{ parcel.unit }}</td>
+      <td>{{ parcel.merchant_invoice_id }}</td>
+      <td>{{ parcel.total_price }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -4,6 +4,7 @@
 {% block content %}
 <br>
 <a href="{% url 'parcel_view' %}" class="btn btn-success"> List of Parcel </a>
+<a href="http://127.0.0.1:8000/admin/login/?next=/admin/" class="btn btn-primary"> Admin </a>
 <form method="post" novalidate>
     <h1> Parcel Create </h1>
     {% csrf_token %}
@@ -39,8 +40,12 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="total_price">Total Price</label>
-        <input type="text" value="" name="total_price" id="total_price" class="form-group">
+        <label for="with_out_total_price">With Out Total Price</label>
+        <input type="text" value="" name="with_out_total_price" id="with_out_total_price" class="form-group">
+    </div>
+    <div class="form-group">
+        <label for="with_total_price">With Total Price</label>
+        <input type="text" value="" name="with_total_price" id="with_total_price" class="form-group">
     </div>
     <button type="submit" class="btn btn-success">Save Parcel</button>
   </form>
@@ -55,9 +60,12 @@
         xttpamount.addEventListener('load', function() {
             if (this.readyState == 4) {
                 let response = JSON.parse(this.responseText);
-                var total_price = document.getElementById("total_price");
-                console.log(total_price);
-                total_price.value = response.total_price;
+                var with_out_total_price = document.getElementById("with_out_total_price");
+                var with_total_price = document.getElementById("with_total_price");
+                console.log(with_out_total_price);
+                console.log(with_total_price);
+                with_out_total_price.value = response.with_out_total_price;
+                with_total_price.value = response.with_total_price;
             } else {
                 let response = JSON.parse(this.responseText);
                 console.log(response);

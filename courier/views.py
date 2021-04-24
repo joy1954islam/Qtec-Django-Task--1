@@ -12,13 +12,15 @@ def parcel_create(request):
         product_type = request.POST['product_type']
         zone = Zone.objects.get(id=request.POST['zone'])
         unit = Unit.objects.get(id=request.POST['unit'])
-        price = request.POST['total_price']
+        with_out_total_price = request.POST['with_out_total_price']
+        with_return_total_price = request.POST['with_total_price']
         parcel = Parcel()
         parcel.merchant = merchant
         parcel.product_type = product_type
         parcel.zone = zone
         parcel.unit = unit
-        parcel.total_price = price
+        parcel.with_out_return_total_price = with_out_total_price
+        parcel.with_return_total_price = with_return_total_price
         parcel.save()
         return redirect('parcel_view')
     context = {
@@ -40,7 +42,15 @@ def parcel_view(request):
 def total_price(request, zone, unit):
     print(zone, unit)
     charges = Charge.objects.get(zone=zone, unit=unit)
-    print(charges)
-    price = charges.price
-    print(price)
-    return JsonResponse({'total_price': price}, safe=False)
+    print('zone name', charges)
+
+    if charges == 'Inside of Dhaka':
+        price = charges.price
+        print('price', price)
+        return JsonResponse({'with_out_total_price': price, 'with_total_price': price}, safe=False)
+    else:
+        price = charges.price + charges.price * 0.01
+        print('price ', price)
+        with_total_price = price + price * 0.5
+        print('with_total_price ', with_total_price)
+        return JsonResponse({'with_out_total_price': price, 'with_total_price': with_total_price}, safe=False)

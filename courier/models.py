@@ -22,7 +22,7 @@ class Charge(models.Model):
     price = models.FloatField()
 
     def __str__(self):
-        return str(self.unit) + ' ' + str(self.zone)
+        return str(self.zone)
 
 
 class Merchant(models.Model):
@@ -42,7 +42,8 @@ class Parcel(models.Model):
     zone = models.ForeignKey(Zone, on_delete=models.CASCADE)
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     merchant_invoice_id = models.CharField(max_length=50, null=True, blank=True)
-    total_price = models.FloatField()
+    with_out_return_total_price = models.FloatField()
+    with_return_total_price = models.FloatField()
 
     def __str__(self):
         return str(self.merchant)

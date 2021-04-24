@@ -12,7 +12,8 @@
       <th scope="col">Zone</th>
       <th scope="col">Unit</th>
       <th scope="col">Merchant Invoice Id</th>
-      <th scope="col">Total Price</th>
+      <th scope="col">With Out Total Price</th>
+      <th scope="col">With Total Price</th>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +25,8 @@
       <td>{{ parcel.zone }}</td>
       <td>{{ parcel.unit }}</td>
       <td>{{ parcel.merchant_invoice_id }}</td>
-      <td>{{ parcel.total_price }}</td>
+      <td>{{ parcel.with_out_return_total_price }}</td>
+      <td>{{ parcel.with_return_total_price }}</td>
     </tr>
   {% endfor %}
   </tbody>

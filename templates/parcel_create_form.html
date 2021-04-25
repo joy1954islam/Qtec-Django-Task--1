@@ -4,7 +4,7 @@
 {% block content %}
 <br>
 <a href="{% url 'parcel_view' %}" class="btn btn-success"> List of Parcel </a>
-<a href="http://127.0.0.1:8000/admin/login/?next=/admin/" class="btn btn-primary"> Admin </a>
+<a href="{{ '/admin/' }}" class="btn btn-primary"> Admin </a>
 <form method="post" novalidate>
     <h1> Parcel Create </h1>
     {% csrf_token %}

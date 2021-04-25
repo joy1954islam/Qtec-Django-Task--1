@@ -40,17 +40,12 @@ def parcel_view(request):
 
 
 def total_price(request, zone, unit):
-    print(zone, unit)
     charges = Charge.objects.get(zone=zone, unit=unit)
-    print('zone name', charges.zone.zone_name)
     zone_name = charges.zone.zone_name
     if zone_name == 'Inside of Dhaka':
         price = charges.price
-        print('price', price)
         return JsonResponse({'with_out_total_price': price, 'with_total_price': price}, safe=False)
     else:
         price = charges.price + charges.price * 0.01
-        print('price ', price)
         with_total_price = price + price * 0.5
-        print('with_total_price ', with_total_price)
         return JsonResponse({'with_out_total_price': price, 'with_total_price': with_total_price}, safe=False)

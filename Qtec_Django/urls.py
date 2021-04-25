@@ -25,3 +25,5 @@ urlpatterns = [
     path('parcel_view/', parcel_view, name='parcel_view'),
     path('total_price/<int:zone>/<int:unit>/', total_price, name='total_price'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -11,6 +11,7 @@
     <div class="form-group">
         <label for="merchant">Select Merchant</label>
         <select class="form-control" name="merchant" id="merchant">
+            <option disabled selected> -------------- </option>
             {% for merchant in merchant %}
                  <option value="{{ merchant.id }}">{{ merchant.merchant_name }}</option>
             {% endfor %}
@@ -19,6 +20,7 @@
     <div class="form-group">
         <label for="product_type">Percel product type</label>
         <select class="form-control" id="product_type" name="product_type">
+            <option disabled selected> -------------- </option>
             <option value="Fragile">Fragile</option>
             <option value="Liquid">Liquid</option>
         </select>
@@ -26,6 +28,7 @@
     <div class="form-group">
         <label for="zone">Select Zone</label>
         <select class="form-control" name="zone" id="zone">
+            <option disabled selected> -------------- </option>
             {% for zone in zone %}
                  <option value="{{ zone.id }}">{{ zone.zone_name }}</option>
             {% endfor %}
@@ -34,6 +37,7 @@
     <div class="form-group">
         <label for="unit">Select Unit</label>
         <select class="form-control" id="unit" name="unit"  onchange="amount_show(event);">
+            <option disabled selected> -------------- </option>
             {% for unit in unit %}
                  <option value="{{ unit.id }}">{{ unit.kg_choose }}</option>
             {% endfor %}
